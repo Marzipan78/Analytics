@@ -21,7 +21,7 @@ order by 1,2
 -- Shows likelihood of dying if you contract covid in your country
 
 Select Location, date, total_cases,total_deaths, (total_deaths/total_cases)*100 as DeathPercentage
-From PortfolioProject..CovidDeaths
+From covid_deaths
 Where location like '%states%'
 and continent is not null 
 order by 1,2
@@ -39,7 +39,7 @@ order by 1,2
 -- Countries with Highest Infection Rate compared to Population
 
 Select Location, Population, MAX(total_cases) as HighestInfectionCount,  Max((total_cases/population))*100 as PercentPopulationInfected
-From PortfolioProject..CovidDeaths
+From covid_deaths
 --Where location like '%states%'
 Group by Location, Population
 order by PercentPopulationInfected desc
